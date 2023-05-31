@@ -1,0 +1,69 @@
+
+body{
+    font-family: kanit;
+    background-color: aliceblue;
+}
+
+.nav-main{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height:14vh;
+    background-color: #fff;
+    display: flex;
+    flex-wrap: wrap;
+    z-index: 1;
+    justify-content: center;
+    align-items: center;
+}
+.logo img {
+    width: 170px;
+    height: 80px;
+    position: relative;
+    left: -6px;
+    top: -5px;
+}
+
+
+.nav-main ul{
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 15px;
+    top: -5px;
+}
+.nav-main ul li{
+list-style: none;
+line-height: 0px;
+padding: 10px 55px 0 0;
+}
+
+.nav-main ul li a{
+    display: block;
+    height: 200%;
+    padding: 0 10px;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #111;
+    font-family: kanit;
+    font-size: 20px;
+}
+ul li a:hover{
+    text-decoration: underline;
+}
+
+/* map */
+
+#map{
+    position: fixed;
+    height: 600px;
+    width: 100%;
+    border-radius: 10px;
+    top: 135px;
+    left: 0;
+}
+
+#texto{
+    margin-top: 20%;
+}
