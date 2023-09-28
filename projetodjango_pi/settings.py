@@ -27,8 +27,32 @@ SECRET_KEY = 'django-insecure-0j@ze=bu(k$)_y=4$dvr-ab11j)j$@@xk#(w=ccyppk^$%%w^7
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+CORS_ALLOWED_HOSTS = ['*']
+CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOWED_ORIGINS = [
+'http://localhost:8000',
+'http://127.0.0.1:8000'
+]
+CORS_ALLOW_HEADERS = [
+'accept',
+'accept-encoding',
+'authorization',
+'content-type',
+'dnt',
+'origin',
+'user-agent',
+'x-csrftoken',
+'x-requested-with',
+]
 
+CORS_ALLOW_METHODS = [
+'DELETE',
+'GET',
+'OPTIONS',
+'PATCH',
+'POST',
+'PUT',
+]
 
 # Application definition
 
@@ -40,7 +64,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.gis',
-    'pi2023'
+    'pi2023',
+    'corsheaders'
 ]
 
 MIDDLEWARE = [
@@ -51,6 +76,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'projetodjango_pi.urls'
@@ -76,17 +102,27 @@ WSGI_APPLICATION = 'projetodjango_pi.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.contrib.gis.db.backends.postgis',
-        'NAME': 'postgres',
-        'USER': 'postgres',
-        'PASSWORD': 'pi2023',
-        'HOST': 'localhost',
-        'PORT': '5432', #porta padrão 5432
+        'ENGINE': '',
+        'NAME': '',
+        'USER': '',
+        'PASSWORD': '',
+        'HOST': '',
+        'PORT': '',
     }
 }
+
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.contrib.gis.db.backends.postgis',
+#        'NAME': 'postgres',
+#        'USER': 'postgres',
+#        'PASSWORD': 'pi2023',
+#        'HOST': 'localhost',
+#        'PORT': '5432', #porta padrão 5432
+#    }
+#}
 
 
 # Password validation

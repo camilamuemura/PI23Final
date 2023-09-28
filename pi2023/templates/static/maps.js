@@ -1,4 +1,4 @@
-var map = L.map("map", {zoomSnap:0.01, minZoom: 3}).setView([-15.83, -47.86], 3);
+var map = L.map("map", {zoomSnap:0.01, minZoom: 4}).setView([-15.83, -47.86], 3);
       var osm = L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
         attribution:
           '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -20,9 +20,7 @@ var map = L.map("map", {zoomSnap:0.01, minZoom: 3}).setView([-15.83, -47.86], 3)
 		fillOpacity: 0.8
     };
 
-
-
-
+/*
 // Marcadores representando os pontos de incêndio
 let url2="https://queimadas.dgi.inpe.br/home/download?id=focos_brasil&time=48h&outputFormat=json&utm_source=landing-page&utm_medium=landing-page&utm_campaign=dados-abertos&utm_content=focos_brasil_48h";
 fetch(url2)
@@ -46,6 +44,46 @@ fetch(url2)
 		}
 	}).addTo(map) 
 });
+*/
+var markers = L.layerGroup().addTo(map);
+
+// Function to handle CSV file parsing and marker creation
+function handleCSV(csvData) {
+  // Clear existing markers
+  markers.clearLayers();
+
+  // Parse the CSV data using Papa Parse
+  Papa.parse(csvData, {
+      header: true,
+      dynamicTyping: true,
+      skipEmptyLines: true,
+      download: true,
+      complete: function (result) {
+          // Process CSV data and create markers
+          result.data.forEach(function (row) {
+              var lat = parseFloat(row.latitude);
+              var lon = parseFloat(row.longitude);
+              //var lat = parseFloat(row.lat);
+              //var lon = parseFloat(row.lon);
+              if (!isNaN(lat) && !isNaN(lon)) {
+                L.circleMarker([lat, lon], 
+                  {radius:5,
+                  color:'red',
+                  opacity:0.75}).bindPopup("Data:" + row.acq_date).addTo(markers);
+                  //L.marker([lat, lon]).addTo(markers);
+              }
+          });
+          // Fit the map bounds to the markers
+          //map.fitBounds(markers.getBounds());
+      }
+  });
+}  // Read markers data from csv file
+
+let url2=" https://firms.modaps.eosdis.nasa.gov/api/area/csv/dbb312bad2293b4ef94c84c8c1cdf9fa/VIIRS_NOAA20_NRT/-80,-57,-32,8/1"
+//let url2="https://firms.modaps.eosdis.nasa.gov/data/active_fire/suomi-npp-viirs-c2/csv/SUOMI_VIIRS_C2_South_America_48h.csv"
+//let url2="https://dataserver-coids.inpe.br/queimadas/queimadas/focos/csv/diario/Brasil/focos_diario_br_20230828.csv"
+handleCSV(url2)
+
 /*let url="https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_week.geojson";
 fetch(url)
 .then(function(response) {
@@ -88,4 +126,3 @@ var watchID = navigator.geolocation.watchPosition(success, error, {
 		});
 		
 //navigator.geolocation.clearWatch(watchID);
-		

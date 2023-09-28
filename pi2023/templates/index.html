@@ -9,7 +9,9 @@
     <title>Incêndios - WebGIS</title>
     <link rel="stylesheet" href="{% static 'style.css' %}">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css">
-    <script type="text/javascript" src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script><script src="js/leaflet.js"></script>
+    <!-- <script type="text/javascript" src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script><script src="js/leaflet.js"></script> -->
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
  <!--map - aqui vincularemos o arquivo Leaflet, no href, no integrity irá o checksum do arquivo para garantir que o mesmo não possa ser alterado garantindo que não ocorra problemas de segurança  -->
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@1,300&display=swap');
@@ -40,17 +42,13 @@
         </ul>
     </nav> 
 </div></section>
-
     <section>
-
     <div id="map"></div>
-
   </section>
 <footer>
     Grupo 1 - Projeto Integrador UNIVESP - 2023
 </footer>
 </body>
-    <script src="{% static 'maps.js' %}"></script>
-
-
+   <script src="{% static 'maps.js' %}"></script>
+</body>
 </html>
