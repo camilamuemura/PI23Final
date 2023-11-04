@@ -1,0 +1,25 @@
+# Use a base image que tenha suporte ao Python e ao Django
+FROM python:3.8
+
+# Instale as dependências do sistema para o GDAL
+RUN apt-get update && apt-get install -y \
+    gdal-bin \
+    libgdal-dev
+
+# Defina a variável de ambiente GDAL_LIBRARY_PATH
+ENV GDAL_LIBRARY_PATH=/usr/lib/libgdal.so
+
+# Defina o diretório de trabalho
+WORKDIR /app
+
+# Copie os arquivos do seu projeto Django para o contêiner
+COPY . /app
+
+# Instale as dependências do projeto
+RUN pip install -r requirements.txt
+
+# Expõe a porta que seu servidor Django estará ouvindo
+EXPOSE 8000
+
+# Inicie o servidor Django
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
