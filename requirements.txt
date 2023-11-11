@@ -1,10 +1,20 @@
 asgiref==3.6.0
+<<<<<<< HEAD
 backports.zoneinfo==0.2.1
 Django==4.2.1
 django-cors-headers==4.2.0
+=======
+backports.zoneinfo==0.2.1;python_version<"3.9"
+Django==4.2.1
+>>>>>>> 1600e22739d8cf381ab02c210cc738c0ff4ba692
 django-leaflet==0.29.0
 psycopg==3.1.9
 psycopg2==2.9.3
 sqlparse==0.4.4
 typing-extensions==4.5.0
+<<<<<<< HEAD
 tzdata==2023.3
+=======
+tzdata>=2023
+django-cors-headers==4.2.0
+>>>>>>> 1600e22739d8cf381ab02c210cc738c0ff4ba692
