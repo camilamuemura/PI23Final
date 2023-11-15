@@ -1,0 +1,273 @@
+{% load static %}
+<style>
+body{
+    font-family: kanit;
+    background-color: white;
+}
+
+.nav-main{
+    position: fixed;
+    border-bottom: 4px solid rgb(13, 0, 128);
+    box-sizing: border-box;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height:14vh;
+    background-color: #fff;
+    display: flex;
+    flex-wrap: wrap;
+    z-index: 1;
+    justify-content: center;
+    align-items: center;
+    /*z-index: 3; /*ordem de empilhamento dos itens na página*/
+    
+
+}
+.logo img {
+    width: 170px;
+    height: 80px;
+    position: relative;
+    left: -6px;
+    top: -5px;
+}
+
+
+.nav-main ul{
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 15px;
+    top: -5px;
+}
+.nav-main ul li{
+list-style: none;
+line-height: 0px;
+padding: 10px 55px 0 0;
+}
+
+.nav-main ul li a{
+    display: block;
+    height: 200%;
+    padding: 0 10px;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #111;
+    font-family: kanit;
+    font-size: 20px;
+}
+ul li a:hover{
+    text-decoration: underline;
+}
+
+/* map */
+
+#map-container {
+    position: static;
+    height: 800px;
+    width: 450px;
+    vertical-align: middle;
+}
+
+#map{
+    /*position: static;
+    height: inherit;
+    width: inherit;*/
+    border-radius: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;;
+    /*display:inline-block;
+    vertical-align:middle;
+    /*z-index: 1; /*ordem de empilhamento dos itens na página*/
+
+
+}
+
+
+#filtro-data {
+    /*z-index: 2; /*ordem de empilhamento dos itens na página*/
+    border-bottom: 2px solid green;
+    border-top: 2px solid green;
+    border-left: 2px solid green;
+    border-right:2px solid green ;
+    box-sizing: border-box;
+    position: static;
+    vertical-align: inherit;
+}
+
+.container1 {
+            width: 30%; /* Adjust the width as needed */
+            float: left;
+            box-sizing: border-box;
+            padding: 20px;
+            background-color: #f0f0f0;
+        }
+
+.container2 {
+            width: 50%; /* Adjust the width as needed */
+            float: right;
+            box-sizing: border-box;
+            padding: 20px;
+            background-color: #e0e0e0;
+        }
+
+.container3{
+            width: 50%; /* Adjust the width as needed */
+            float: right;
+            box-sizing: border-box;
+            padding: 20px;
+            background-color: #e0e0e0;
+
+        }
+
+
+         /* Clear the float to prevent layout issues */
+.clearfix::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+#texto{
+    margin-top: 20%;
+}
+
+
+
+footer {
+   font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    font-style: italic;
+    position: inherit;
+    margin-top: 10px;
+    text-align: relative;
+    float:inherit
+
+}
+.split {
+         height: 100%;
+         width: 50%;
+         position: fixed;
+         top: 0;
+      }
+      .left {
+         left: 0;
+         background-color: yellowgreen;
+      }
+      .right {
+         right: 0;
+         background-color: aquamarine;
+      }
+
+
+.wrapperExampleThree
+{
+    margin: 0 auto;
+    width: 900px;
+}
+.wrapperExampleThree .leftColumn
+{
+    width: 200px;
+    height: 50px;
+    background: pink;
+    float: left;
+}
+.wrapperExampleThree .rightColumn
+{
+    width: 650px;
+    margin-left:50px;
+    height: 50px;
+    background: green;
+    float: left;
+}
+
+</style>
+
+
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width" initial-scale="1.0">
+    <title>Incêndios - WebGIS</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css">
+    <!-- <script type="text/javascript" src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script><script src="js/leaflet.js"></script> -->
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css">
+    <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"></script>
+
+ <!--map - aqui vincularemos o arquivo Leaflet, no href, no integrity irá o checksum do arquivo para garantir que o mesmo não possa ser alterado garantindo que não ocorra problemas de segurança  -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@1,300&display=swap');
+    /*#map {
+    width: 100%;
+    height: 500px;
+    }*/
+    </style>
+ <link rel="stylesheet" href=""
+   integrity=""
+   crossorigin=""/>
+   <script src=""
+   integrity=""
+   crossorigin=""></script>
+
+<!-- <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
+<script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script> -->
+
+</head>
+
+<body id="index">
+    <section>
+        <nav class="nav-main" style="font-family: kanit;">
+            <div class="logo"><img src="{% static 'logo_univesp.png' %}" alt=""></div>
+            <ul>
+                <li> <a href="index.html">Home</a></li>
+                <li> <a href= "sobre_o_projeto.html">Sobre o Projeto</a></li>
+                <li> <a href="universidade.html">A Universidade</a></li>
+                <li> <a href="dashboard.html">Gráficos</a></li>
+            </ul>
+        </nav> 
+    </section>
+
+    
+   
+    <section>
+    
+        <div class="container1" style="background-color: #f0f0f0;">
+            <h1>Mapa</h1>
+            <!--<div id ="map-container">-->
+                <div id="map"></div>
+            <!--</div>-->
+            <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+            <script src="{% static 'maps.js' %}"></script>
+        </div>
+    
+        <!-- FILTRO: Seleção de data -->
+        <div class="container2" style="background-color: #e0e0e0;">
+            <h2>Filtro</h2>
+                <div id="filtro-data">
+                <form id="filtro-data-form">
+                    <label for="faixa-de-datas">Selecione a Faixa de Datas:</label>
+                        <select id="faixa-de-datas">
+                            <option value="1">Data de hoje</option>
+                            <option value="2">A partir de ontem</option>
+                            <option value="10">Últimos 10 dias</option>
+                <!-- Adicione mais opções conforme necessário -->
+                        </select>
+                    <button type="submit">Aplicar Filtro</button>
+                </form>
+            </div>
+        </div>
+        <div class="container3" style="background-color: #e0e0e0;">
+            <h2>Teste</h2>
+        </div>
+    
+        <div> class="clearfix"></div>
+</section> 
+    
+</body>
+
+</html>
