@@ -1,0 +1,97 @@
+
+body{
+    font-family: kanit;
+    background-color: white;
+}
+
+.nav-main{
+    position: fixed;
+    border-bottom: 4px solid rgb(13, 0, 128);
+    /*box-shadow: 10px 10px 10px;*/
+    box-sizing: border-box;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height:14vh;
+    background-color: #fff;
+    display: flex;
+    flex-wrap: wrap;
+    z-index: 1;
+    justify-content: center;
+    align-items: center;
+    /*z-index: 3; /*ordem de empilhamento dos itens na página*/
+    
+
+}
+.logo img {
+    width: 170px;
+    height: 80px;
+    position: relative;
+    left: -6px;
+    top: -5px;
+}
+
+
+.nav-main ul{
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 15px;
+    top: -5px;
+}
+.nav-main ul li{
+list-style: none;
+line-height: 0px;
+padding: 10px 55px 0 0;
+}
+
+.nav-main ul li a{
+    display: block;
+    height: 200%;
+    padding: 0 10px;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #111;
+    font-family: kanit;
+    font-size: 20px;
+}
+ul li a:hover{
+    text-decoration: underline;
+}
+
+h2 {
+    color:black ;
+    font-family: kanit;
+    font-size: 32px ;  
+}
+
+/* map */
+
+/*#map{
+    height: 700px;
+    width: 200%;
+    border-radius: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    left: 0;
+    /*z-index: 1; /*ordem de empilhamento dos itens na página
+
+}*/
+
+#texto{
+    margin-top: 20%;
+}
+
+#filtro-data {
+    /*z-index: 2; /*ordem de empilhamento dos itens na página*/
+    text-align: center;
+}
+
+footer {
+   font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    font-style: italic;
+    position: bottom;
+    margin-top: 10px;
+    text-align: center;
+}
